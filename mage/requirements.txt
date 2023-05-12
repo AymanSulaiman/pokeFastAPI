@@ -1,0 +1,5 @@
+mage-ai==0.8.66
+sshtunnel==0.4.0
+psycopg2==2.9.6
+polars==0.17.9
+# httpx==0.24.0

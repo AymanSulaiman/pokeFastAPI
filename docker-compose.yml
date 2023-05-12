@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: FastAPI
+    ports:
+      - "8000:8000"
+    restart: always
+    # networks:
+    #   - mynetwork
+
+  mage:
+    build:
+      dockerfile: Dockerfile
+      context: ./mage
+    container_name: mage
+    ports: 
+      - "6789:6789"
+    restart: always
