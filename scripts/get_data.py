@@ -93,7 +93,7 @@ def main():
     pokemon_df = extend_pokemon_types(first_gen_df)
 
     # Writing the parquet locally
-    pokemon_df.write_parquet(os.path.join('..','data','pokemon_first_gen.parquet'))
+    pokemon_df.write_parquet(os.path.join('..','data','pokemon_from_script.parquet'))
 
 if __name__ == '__main__':
     print("Starting collecting pokemon data")
