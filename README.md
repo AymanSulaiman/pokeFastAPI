@@ -20,7 +20,7 @@ docker-compose up --build
 * Mage.AI - `localhost:6789`
 
 ## Data file format
-* The first gen pokemon are stored in a parquet file as a parquet file uses efficient data compression and encoding scheme for fast data storing and retrieval. With DuckDB, we can load the data via it's own SQL accent/dialect and query the data directly whilst it's in memory.
+* The pokemon pokemon are stored in a parquet file as a parquet file uses efficient data compression and encoding scheme for fast data storing and retrieval. With DuckDB, we can load the data via it's own SQL accent/dialect and query the data directly whilst it's in memory.
 
 ## How the data was initally collected and exported
 ```python
@@ -33,13 +33,13 @@ URL = "https://pokeapi.co/api/v2/pokemon/?limit="
 
 def retrieve_first_gen(url: str):
     """
-    Retrieves the first generation of Pokemon data from the PokeAPI and returns it as a Polars DataFrame.
+    Retrieves the Pokemon data from the PokeAPI and returns it as a Polars DataFrame.
 
     Args:
     - url: A string representing the URL of the PokeAPI endpoint to retrieve data from.
 
     Returns:
-    - A Polars DataFrame containing the first generation of Pokemon data.
+    - A Polars DataFrame containing the Pokemon data.
     """
     first_gen = httpx.get(url).json()
     first_gen_df = pl.DataFrame(first_gen['results'])
@@ -90,9 +90,9 @@ def main():
     Returns:
     - None
     """
-    first_gen_df = retrieve_first_gen(URL+"151")
+    first_gen_df = retrieve_first_gen(URL+"1015")
     pokemon_df = extend_pokemon_types(first_gen_df)
-    pokemon_df.write_parquet(os.path.join('..','data','pokemon_first_gen.parquet'))
+    pokemon_df.write_parquet(os.path.join('..','data','pokemon_from_mage.parquet'))
 
 if __name__ == '__main__':
     print("Starting collecting pokemon data")
@@ -105,12 +105,12 @@ How the PokeData loaded locally.
 # Importing DuckDB
 import duckdb
 
-# Connecting to the 'pokemon_first_gen.parquet' table
+# Connecting to the 'pokemon_from_mage.parquet' table
 db = duckdb.sql("""
     SELECT
         *
     FROM
-        'data/pokemon_first_gen.parquet'
+        'data/pokemon_from_mage.parquet'
 """)
 ```
 

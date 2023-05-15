@@ -1,7 +1,7 @@
 # Importing DuckDB
 import duckdb
 
-# Connecting to the 'pokemon_first_gen.parquet' table
+# Connecting to the 'pokemon_from_mage.parquet' table
 db = duckdb.sql("""
     SELECT
         *
@@ -12,7 +12,7 @@ db = duckdb.sql("""
 
 def get_pokemon_by_single_type(pokemon_type: str, exact: bool) -> list:
     """
-    retrives a list of Pokemon dicts that match the given type.
+    Retrives a list of Pokemon dicts that match the given type.
 
     Args:
         pokemon_type (str): The name of the type to search for.
