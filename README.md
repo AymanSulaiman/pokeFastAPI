@@ -20,6 +20,7 @@ docker-compose up --build
 ## What should spin up
 * FastAPI - `localhost:8000` 
 * Mage.AI - `localhost:6789`
+* Streamlit - `localhost:8501`
 
 ## Data file format
 * The pokemon pokemon are stored in a parquet file as a parquet file uses efficient data compression and encoding scheme for fast data storing and retrieval. With DuckDB, we can load the data via it's own SQL accent/dialect and query the data directly whilst it's in memory.
