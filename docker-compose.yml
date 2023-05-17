@@ -9,14 +9,37 @@ services:
     ports:
       - "8000:8000"
     restart: always
-    # networks:
-    #   - mynetwork
+    tty: true
+    networks:
+      - taskcafe-test
 
   mage:
     build:
       dockerfile: Dockerfile
       context: ./mage
     container_name: mage
-    ports: 
+    ports:
       - "6789:6789"
     restart: always
+    tty: true
+    networks:
+      - taskcafe-test
+
+  streamlit:
+    build:
+      dockerfile: Dockerfile
+      context: ./streamlit
+    container_name: streamlit
+    ports:
+      - "8501:8501"
+    depends_on:
+      - app
+    tty: true
+    links:
+      - app
+    networks:
+      - taskcafe-test
+
+networks:
+  taskcafe-test:
+    driver: bridge

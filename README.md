@@ -6,6 +6,8 @@ Diagrams package, using images
 * DuckDB - static in-memory version of SQLite, can load csv and parquet files
 * FastAPI - Backend
 * Mage.ai - Orchestration
+* Streamlit - Frontend
+* Matplotlib - Radar Graphs
 * Docker Compose
 
 ## How to Run

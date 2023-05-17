@@ -5,25 +5,18 @@ from math import pi
 import requests
 
 
-POKEAPI_URL = "http://localhost:8000"
-
-# def get_pokemon_data(pokemon_url):
-#     response = requests.get(pokemon_url)
-#     if response.status_code == 200:
-#         return response.json()
-#     return None
+POKEAPI_URL = "http://app:8000"
 
 def get_pokemon_data(pokemon_url):
+    """
+    Retrieve Pokemon data from the given URL.
+    """
     pokemon_json = requests.get(pokemon_url).json()
-
+    # Extract relevant data from the JSON response
     name = pokemon_json['name']
-
     stats = pokemon_json['stats']
-
     sprites = pokemon_json['sprites']
-
     types = pokemon_json['types']
-
     return {
         "name": name, 
         "stats": stats, 
@@ -32,22 +25,34 @@ def get_pokemon_data(pokemon_url):
         }
 
 def get_pokemon_sprite(pokemon_data):
-    # sprite_url = pokemon_data['sprites']['front_default']
+    """
+    Retrieve the sprite of the Pokemon from its data.
+    """
     sprite_url = pokemon_data['sprites']['other']['official-artwork']['front_default']
     response = requests.get(sprite_url)
     return response.content if response.status_code == 200 else None
 
+
 def get_pokemon_stats(pokemon_data):
+    """
+    Extract the types of the Pokemon from its data.
+    """
     stats = pokemon_data['stats']
     stats_dict = {stat['stat']['name']: stat['base_stat'] for stat in stats}
     return stats_dict
 
 def get_pokemon_types(pokemon_data):
+    """
+    Extract the types of the Pokemon from its data.
+    """
     types = pokemon_data['types']
     types_list = [typ['type']['name'] for typ in types]
     return types_list
 
 def fetch_pokemon_dual_type(type1, type2):
+    """
+    Fetch Pokemon with dual types from the PokeAPI.
+    """
     response = requests.post(f"{POKEAPI_URL}/pokemon_dual_type/{type1}-{type2}")
     if response.status_code == 200:
         types_data = response.json()
@@ -60,6 +65,9 @@ def fetch_pokemon_dual_type(type1, type2):
     return None
 
 def fetch_pokemon_single_type(pokemon_type, exact_match):
+    """
+    Fetch Pokemon with a single type from the PokeAPI.
+    """
     response = requests.post(f"{POKEAPI_URL}/pokemon_single_type/{pokemon_type}?exact={exact_match}")
     if response.status_code == 200:
         types_data = response.json()
@@ -77,9 +85,10 @@ def fetch_pokemon_single_type(pokemon_type, exact_match):
         return single_type_pokemon
     return None
 
-
-
 def create_radar_graph(pokemon_data):
+    """
+    Create a radar graph based on the Pokemon's stats.
+    """
     pokemon_name = pokemon_data['name']
     pokemon_stats = get_pokemon_stats(pokemon_data)
 

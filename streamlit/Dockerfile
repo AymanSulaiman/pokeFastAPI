@@ -1,7 +1,7 @@
 FROM python:3.11
-
+WORKDIR /streamlit
 COPY . .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-EXPOSE 6789
-CMD ["mage","start","pokemon_mage_orch","--host","0.0.0.0","--port","6789"]
+EXPOSE 8501
+CMD ["streamlit", "run", "app.py"]
