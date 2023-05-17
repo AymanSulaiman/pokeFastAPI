@@ -232,6 +232,5 @@ localhost:8000/docs
 The next phase of the API project would be able to either implement or serve the following:
 * Deploy to a cloud service provider or an on-prems system for daily use by others.
 * Listen to feedback and improve the API overtime and adding functionality.
-* Implement a pokedex functionality with either Streamlit or Tableau, this would require DBT (Data Build Tools) that can be used by mage.
 * Transfer the data from a data lake/local to SQL so the data can be accessed by different teams.
 * Incorperate security to the API with JWT.
