@@ -92,8 +92,13 @@ def main():
     # Running the function above
     pokemon_df = extend_pokemon_types(first_gen_df)
 
-    # Writing the parquet locally
-    pokemon_df.write_parquet(os.path.join('..','data','pokemon_from_script.parquet'))
+    # Ensure the directory exists
+    output_directory = '/app/data'
+    if not os.path.exists(output_directory):
+        os.makedirs(output_directory)
+
+    # Writing the parquet to the designated path
+    pokemon_df.write_parquet(os.path.join(output_directory, 'pokemon_from_script.parquet'))
 
 if __name__ == '__main__':
     print("Starting collecting pokemon data")

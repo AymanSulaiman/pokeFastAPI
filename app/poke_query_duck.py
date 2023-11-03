@@ -3,11 +3,12 @@ import duckdb
 
 # Connecting to the 'pokemon_from_mage.parquet' table
 db = duckdb.sql("""
-    SELECT
-        *
-    FROM
-        'data/pokemon_from_mage.parquet'
-""")
+        SELECT
+            *
+        FROM
+            '/app/data/pokemon_from_mage.parquet'
+    """)
+
 
 
 def get_pokemon_by_single_type(pokemon_type: str, exact: bool) -> list:

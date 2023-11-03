@@ -23,12 +23,12 @@ blocks:
   has_callback: false
   language: python
   name: get all types
-  status: executed
+  status: updated
   type: transformer
   upstream_blocks:
   - request_pokemon_data
   uuid: get_all_types
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration: {}
   downstream_blocks: []
@@ -47,6 +47,6 @@ description: null
 extensions: {}
 name: little breeze
 type: python
-updated_at: '2023-05-12 17:51:51'
-uuid: little_breeze
+updated_at: '2023-11-03 01:21:46'
+uuid: pokemon_collector
 widgets: []

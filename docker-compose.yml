@@ -12,6 +12,10 @@ services:
     tty: true
     networks:
       - taskcafe-test
+    volumes:
+      - shared_data:/app/data
+    # depends_on:
+    #   - mage
 
   mage:
     build:
@@ -24,6 +28,8 @@ services:
     tty: true
     networks:
       - taskcafe-test
+    volumes:
+      - shared_data:/app/data
 
   streamlit:
     build:
@@ -39,6 +45,11 @@ services:
       - app
     networks:
       - taskcafe-test
+    volumes:
+      - shared_data:/app/data
+
+volumes:
+  shared_data:
 
 networks:
   taskcafe-test:
