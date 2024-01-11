@@ -20,6 +20,7 @@ def export_data(pokemon_df, *args, **kwargs):
     output_directory = '/app/data'
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
-
+    
+    # Writing the parquet to the designated path
     # This can be saved to a data lake like an S3 Bucket
     pl.from_pandas(pokemon_df).write_parquet(os.path.join(output_directory, "pokemon_from_mage.parquet"))

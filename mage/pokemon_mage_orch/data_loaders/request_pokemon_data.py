@@ -16,8 +16,9 @@ def load_data():
     Returns:
         Anything (e.g. data frame, dictionary, array, int, str, etc.)
     """
-    # Specify your data loading logic here
+    # Makes a call to retrieve a certain number of pokemon
     pokemon = httpx.get(URL+"1015").json()
+    # Using pandas to load the results into a dataframe
     pokemon_df = pd.DataFrame(pokemon['results'])
     return pokemon_df
 
