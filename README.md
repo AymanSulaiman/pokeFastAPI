@@ -1,4 +1,4 @@
-# fastpokeapi-ayman
+# pokéFastApi
 
 ## Tools and technologies
 Diagrams package, using images
