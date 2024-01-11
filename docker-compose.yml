@@ -14,8 +14,8 @@ services:
       - taskcafe-test
     volumes:
       - shared_data:/app/data
-    # depends_on:
-    #   - mage
+    depends_on:
+      - mage
 
   mage:
     build:

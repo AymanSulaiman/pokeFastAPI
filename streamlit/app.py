@@ -75,7 +75,6 @@ def fetch_pokemon_single_type(pokemon_type, exact_match):
         for pokemon in types_data:
             pokemon_name = pokemon['url']
             pokemon_data = get_pokemon_data(pokemon_name)
-            print(pokemon_data)
             if exact_match:
                 if [pokemon_type] == get_pokemon_types(pokemon_data):
                     single_type_pokemon.append(pokemon_data)

@@ -5,7 +5,7 @@ if 'data_exporter' not in globals():
     from mage_ai.data_preparation.decorators import data_exporter
 
 @data_exporter
-def export_data(first_gen_df, *args, **kwargs):
+def export_data(pokemon_df, *args, **kwargs):
     """
     Exports data to some source
 
@@ -22,4 +22,4 @@ def export_data(first_gen_df, *args, **kwargs):
         os.makedirs(output_directory)
 
     # This can be saved to a data lake like an S3 Bucket
-    pl.from_pandas(first_gen_df).write_parquet(os.path.join(output_directory, "pokemon_from_mage.parquet"))
+    pl.from_pandas(pokemon_df).write_parquet(os.path.join(output_directory, "pokemon_from_mage.parquet"))

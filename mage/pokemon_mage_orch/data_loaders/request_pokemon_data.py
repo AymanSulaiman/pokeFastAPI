@@ -17,21 +17,21 @@ def load_data():
         Anything (e.g. data frame, dictionary, array, int, str, etc.)
     """
     # Specify your data loading logic here
-    first_gen = httpx.get(URL+"1015").json()
-    first_gen_df = pd.DataFrame(first_gen['results'])
-    return first_gen_df
+    pokemon = httpx.get(URL+"1015").json()
+    pokemon_df = pd.DataFrame(pokemon['results'])
+    return pokemon_df
 
 
 @test
-def test_output(first_gen_df) -> None:
+def test_output(pokemon_df) -> None:
     """
     The tests below assert the fact that this is the first gen pokemon
     Test 1 affrims that there are 1015 pokemon in the dataset
     Test 2 affirms that bulbasaur is the first pokemon in the dataframe
     Test 3 affirms that mew is the last pokemon in the dataframe 
     """
-    assert len(first_gen_df) == 1015, 'There should be exactly 151 pokemon'
-    assert first_gen_df["name"][0] == "bulbasaur" # First Pokemon should be the best starter pokemon
-    assert first_gen_df["name"][150] == "mew"     # Last Pokemon should be Mew, in terms of first generation
+    assert len(pokemon_df) == 1015, 'There should be exactly 151 pokemon'
+    assert pokemon_df["name"][0] == "bulbasaur" # First Pokemon should be the best starter pokemon
+    assert pokemon_df["name"][150] == "mew"     # Last Pokemon should be Mew, in terms of first generation
 
 
